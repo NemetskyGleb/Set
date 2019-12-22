@@ -9,7 +9,8 @@ public:
 	Set();
 	Set(char* s);
 	Set(Set& );
-	Set& operator= (Set& );
+	Set& operator=(Set&);
+	Set(BoolVector& V);
 	~Set() {};
 	/* operations*/
 	Set operator+ (char ch); // V = *this + ch
@@ -23,14 +24,14 @@ public:
 	Set operator* (Set S); //intersection, new set
 	Set  operator*= (Set S); //intersection, change *this
 
-	Set operator~ (); //addition to Univers
+	Set operator~(); //addition to Univers
 
-	bool operator== (Set S);
+	bool operator==(Set S);
 	bool operator!= (Set S);
-
-	int Number() {	return M; };
-	virtual void Scan(int) override;
-	virtual void Print() override;
+	
+	int Number() { return M; };
+	void Scan();
+	void Print();
 
 	friend std::ostream & operator<<(std::ostream& r, Set &S);
 	friend std::istream & operator>>(std::istream& r, Set &S);

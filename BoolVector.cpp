@@ -91,10 +91,6 @@ BoolVector::BoolVector(BoolVector &V)
 	for (int i = 0; i<m; i++)
 		bv[i] = V.bv[i];
 }
-BoolVector::~BoolVector()
-{
-	delete[]bv;
-}
 BoolVector & BoolVector::operator=(BoolVector &V)
 {
 	if (this != &V)
@@ -292,36 +288,6 @@ UC BoolVector::operator[] (int pos)
 		if (bv[m - 1 - m1] & mask) return '1';
 		else return '0';
 	}
-}
-void BoolVector::Print(){
-	UC mask = 1;
-	if (n % 8 == 0)
-		mask <<= 7;
-	else
-		mask <<= (n % 8 - 1);
-
-	for (int i = 0; i < m; i++, mask = 1 << 7)
-	{
-		for (; mask; mask >>= 1)
-		{
-			if (bv[i] & mask)
-				std::cout << '1';
-			else
-				std::cout << '0';
-		}
-	}
-	std::cout << std::endl;
-}
-void BoolVector::Scan(int N)
-{
-	std::cout << "enter bool vector, length " << N << std::endl;
-	std::cin.get();
-	char *s;
-	s = new char[N + 1];
-	std::cin.getline(s, N + 1);
-	BoolVector T(s);
-	*this = T;
-	delete[]s;
 }
 int BoolVector::Weight(){
 	int res = 0;

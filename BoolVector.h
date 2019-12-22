@@ -13,11 +13,40 @@ public:
 	BoolVector(char*);
 	BoolVector(char *s, int N); //strlen(s)!=N
 	BoolVector(BoolVector &);
-	virtual ~BoolVector();
+	~BoolVector(){
+		delete[]bv;
+	}
 	BoolVector & operator=(BoolVector&);
 
-	virtual void Print();
-	virtual void Scan(int);
+	void Print(){
+		UC mask = 1;
+		if (n % 8 == 0)
+			mask <<= 7;
+		else
+			mask <<= (n % 8 - 1);
+
+		for (int i = 0; i < m; i++, mask = 1 << 7)
+		{
+			for (; mask; mask >>= 1)
+			{
+				if (bv[i] & mask)
+					std::cout << '1';
+				else
+					std::cout << '0';
+			}
+		}
+		std::cout << std::endl;
+	}
+	void Scan(int N){
+		std::cout << "enter bool vector, length " << N << std::endl;
+		std::cin.get();
+		char *s;
+		s = new char[N + 1];
+		std::cin.getline(s, N + 1);
+		BoolVector T(s);
+		*this = T;
+		delete[]s;
+	}
 
 	int Weight();
 	BoolVector operator& (BoolVector); 
