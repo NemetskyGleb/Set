@@ -2,13 +2,13 @@
 #include <iostream>
 #include "BoolVector.h"
 
-class Set : public BoolVector{
+class Set : public BoolVector {
 private:
 	int M;  //кол-во элементов мн-ва
 public:
 	Set();
 	Set(char* s);
-	Set(Set& );
+	Set(Set&);
 	Set& operator=(Set&);
 	Set(BoolVector& V);
 	~Set() {};
