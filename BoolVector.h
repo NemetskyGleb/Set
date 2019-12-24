@@ -13,12 +13,12 @@ public:
 	BoolVector(char*);
 	BoolVector(char *s, int N); //strlen(s)!=N
 	BoolVector(BoolVector &);
-	~BoolVector(){
+	virtual ~BoolVector(){
 		delete[]bv;
 	}
 	BoolVector & operator=(BoolVector&);
 
-	void Print(){
+	virtual void Print(){
 		UC mask = 1;
 		if (n % 8 == 0)
 			mask <<= 7;
@@ -37,7 +37,7 @@ public:
 		}
 		std::cout << std::endl;
 	}
-	void Scan(int N){
+	virtual void Scan(int N){
 		std::cout << "enter bool vector, length " << N << std::endl;
 		std::cin.get();
 		char *s;

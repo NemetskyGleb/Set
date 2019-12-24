@@ -6,6 +6,7 @@ int main(){
 	Set A;
 	Set B("dcba321");
 	cout << "B = " << B;
+	B.Print();
 	A = A + '4';
 	cout << "A = A + 4 = " << A;
 	A += B;

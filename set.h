@@ -11,7 +11,7 @@ public:
 	Set(Set&);
 	Set& operator=(Set&);
 	Set(BoolVector& V);
-	~Set() {};
+	virtual ~Set() {};
 	/* operations*/
 	Set operator+ (char ch); // V = *this + ch
 	Set& operator+= (char ch); // *this=*this+ch
@@ -31,7 +31,7 @@ public:
 	
 	int Number() { return M; };
 	void Scan();
-	void Print();
+	void Print() override;
 
 	friend std::ostream & operator<<(std::ostream& r, Set &S);
 	friend std::istream & operator>>(std::istream& r, Set &S);
